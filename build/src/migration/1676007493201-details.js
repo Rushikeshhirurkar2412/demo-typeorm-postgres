@@ -9,12 +9,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.details1676007493201 = void 0;
 const typeorm_1 = require("typeorm");
-class user1675857501793 {
+class details1676007493201 {
     up(queryRunner) {
         return __awaiter(this, void 0, void 0, function* () {
             yield queryRunner.createTable(new typeorm_1.Table({
-                name: "user",
+                name: "User_details",
                 columns: [
                     {
                         name: "id",
@@ -23,28 +24,20 @@ class user1675857501793 {
                         isGenerated: true,
                     },
                     {
-                        name: "first_name",
+                        name: "age",
+                        type: "int",
+                    },
+                    {
+                        name: "city",
                         type: "varchar",
                     },
                     {
-                        name: "lname_name",
+                        name: "state",
                         type: "varchar",
                     },
                     {
-                        name: "email",
-                        type: "varchar",
-                    },
-                    {
-                        name: "password",
-                        type: "varchar",
-                    },
-                    {
-                        name: "is_active",
-                        type: "boolean",
-                    },
-                    {
-                        name: "is_deleted",
-                        type: "boolean",
+                        name: "user_id",
+                        type: "int",
                     },
                     {
                         name: "created_by",
@@ -74,13 +67,18 @@ class user1675857501793 {
                         default: "now()"
                     }
                 ],
+            })), true;
+            yield queryRunner.createForeignKey("User_details", new typeorm_1.TableForeignKey({
+                columnNames: ["user_id"],
+                referencedTableName: "user",
+                referencedColumnNames: ["id"]
             }));
         });
     }
     down(queryRunner) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield queryRunner.dropTable("user");
+            yield queryRunner.dropTable('User_details');
         });
     }
 }
-exports.default = user1675857501793;
+exports.details1676007493201 = details1676007493201;

@@ -15,7 +15,7 @@ export const createProduct=async(req:Request,res:Response)=>{
         {Product__name:Product__name,
             description:description})
         
-        console.log("user has been created",query);
+        console.log("Product has been created",query);
 res.status(200).json({message:"user has been created"})
 
         

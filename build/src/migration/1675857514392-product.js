@@ -23,16 +23,69 @@ class product1675857514392 {
                         isGenerated: true,
                     },
                     {
-                        name: "productName",
+                        name: "Product_name",
                         type: "varChar",
-                    }
-                ]
+                    },
+                    {
+                        name: "selling_price",
+                        type: "varChar",
+                    },
+                    {
+                        name: "description",
+                        type: "varChar",
+                    },
+                    {
+                        name: "sort",
+                        type: "int",
+                    },
+                    {
+                        name: "quantity",
+                        type: "int",
+                    },
+                    {
+                        name: "category_id",
+                        type: "int",
+                    },
+                    {
+                        name: "created_by",
+                        type: "varchar",
+                    },
+                    {
+                        name: "updated_by",
+                        type: "varchar",
+                    },
+                    {
+                        name: "deleted_by",
+                        type: "varchar",
+                    },
+                    {
+                        name: "created_at",
+                        type: "timestamp",
+                        default: "now()",
+                    },
+                    {
+                        name: "updated_at",
+                        type: "timestamp",
+                        default: "now()",
+                    },
+                    {
+                        name: "deleted_at",
+                        type: "timestamp",
+                        default: "now()",
+                    },
+                ],
+            })),
+                true;
+            yield queryRunner.createForeignKey("product", new typeorm_1.TableForeignKey({
+                columnNames: ["category_id"],
+                referencedTableName: "category",
+                referencedColumnNames: ["id"],
             }));
         });
     }
     down(queryRunner) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield queryRunner.dropTable('product');
+            yield queryRunner.dropTable("product");
         });
     }
 }

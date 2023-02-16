@@ -20,7 +20,7 @@
         "migration:generate": "cd ./src/migration && npx typeorm-ts-node-commonjs migration:generate",
         "migration:run": "src/migration/*.ts && npx typeorm-ts-node-commonjs migration:run",
         "migration:revert": "src/migration/*.ts && npx typeorm-ts-node-commonjs migration:revert",
-        "entity": "cd src/entity && npx typeorm-ts-node-commonjs entity:create"
+        "entity": "cd src/entities && npx typeorm-ts-node-commonjs entity:create"
     },
     "author": "",
     "license": "ISC",

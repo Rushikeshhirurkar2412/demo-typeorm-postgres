@@ -9,12 +9,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.category1676031854939 = void 0;
 const typeorm_1 = require("typeorm");
-class user1675857501793 {
+class category1676031854939 {
     up(queryRunner) {
         return __awaiter(this, void 0, void 0, function* () {
             yield queryRunner.createTable(new typeorm_1.Table({
-                name: "user",
+                name: "category",
                 columns: [
                     {
                         name: "id",
@@ -23,28 +24,16 @@ class user1675857501793 {
                         isGenerated: true,
                     },
                     {
-                        name: "first_name",
-                        type: "varchar",
+                        name: "category_name",
+                        type: "varChar",
                     },
                     {
-                        name: "lname_name",
-                        type: "varchar",
+                        name: "parent_category_id",
+                        type: "int",
                     },
                     {
-                        name: "email",
-                        type: "varchar",
-                    },
-                    {
-                        name: "password",
-                        type: "varchar",
-                    },
-                    {
-                        name: "is_active",
-                        type: "boolean",
-                    },
-                    {
-                        name: "is_deleted",
-                        type: "boolean",
+                        name: "sort",
+                        type: "int",
                     },
                     {
                         name: "created_by",
@@ -73,14 +62,14 @@ class user1675857501793 {
                         type: "timestamp",
                         default: "now()"
                     }
-                ],
+                ]
             }));
         });
     }
     down(queryRunner) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield queryRunner.dropTable("user");
+            yield queryRunner.dropTable("category");
         });
     }
 }
-exports.default = user1675857501793;
+exports.category1676031854939 = category1676031854939;

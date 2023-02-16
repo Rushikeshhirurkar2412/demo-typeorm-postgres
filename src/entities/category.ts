@@ -1,16 +1,14 @@
-import { Entity,Column,PrimaryGeneratedColumn,BaseEntity} from "typeorm";
+import { Entity,Column,PrimaryGeneratedColumn,BaseEntity, ManyToOne, OneToMany} from "typeorm";
+import { Product } from "./product";
 
 
 @Entity()
-export class Product extends BaseEntity {
+export class category extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: Number;
 
   @Column()
-  Product__name: string;
-
-  @Column()
-  description: string;
+  category_name: string;
 
   @Column()
   created_by: string;
@@ -29,5 +27,8 @@ export class Product extends BaseEntity {
 
   @Column()
   deleted_at: Date;
+
+@OneToMany(()=>Product,(Product)=>Product.id)
+product_id:Product
 }
 

@@ -26,17 +26,17 @@ const createWithRelation = (req, res) => __awaiter(void 0, void 0, void 0, funct
         }
         let hashPassword = bcrypt.hashSync(password, salt);
         let userQuery = yield new user_1.User();
-        userQuery.first_name = fname;
-        userQuery.lname_name = lname;
+        userQuery.fname = fname;
+        userQuery.lname = lname;
         userQuery.email = email;
         userQuery.password = hashPassword;
         const userSave = yield user_1.User.save(userQuery);
-        let detailsQuery = yield new details_1.User_details();
+        let detailsQuery = yield new details_1.details();
         detailsQuery.age = age;
         detailsQuery.city = city;
         detailsQuery.state = state;
         detailsQuery.user = userQuery;
-        const datailsSave = yield details_1.User_details.save(detailsQuery);
+        const datailsSave = yield details_1.details.save(detailsQuery);
         console.log("user has been created", userQuery, detailsQuery);
         res.status(200).json({ message: "user has been created" });
     }

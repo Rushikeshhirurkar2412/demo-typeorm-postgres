@@ -3,6 +3,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import connections from "./src/my-app-data-source";
 import { route } from "./src/route/userRoute";
+import Productroute from "./src/route/productRoute";
 
 let port = process.env.PORT || 4501;
 
@@ -34,5 +35,7 @@ app.use(bodyParser.json());
 
 // this is middleware for CRUD
 app.use("/", route);
+app.use("/", Productroute);
+
 
 // url: process.env.DATABASE_URL,

@@ -8,7 +8,7 @@ export const userCreateSchema=joi.object({
     confirmPassword: joi.ref('password'),
     age:joi.number().min(3),
     city:joi.string().min(3).max(10),
-    state:joi.string().min(3).max(10)
+    state:joi.string().min(3).max(30)
 
 })
 

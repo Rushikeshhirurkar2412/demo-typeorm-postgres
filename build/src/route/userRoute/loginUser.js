@@ -33,10 +33,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const dotenv = __importStar(require("dotenv"));
-const bcrypt = require('bcryptjs');
+const bcrypt = require("bcryptjs");
 const user_1 = require("../../entities/user");
 const validation_1 = require("../../validation");
-var jwt = require('jsonwebtoken');
+var jwt = require("jsonwebtoken");
 dotenv.config();
 //create secretKey in jwt
 let secretKey = process.env.SECRET_KEY;
@@ -46,7 +46,9 @@ let loginUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         let { email, password } = req.body;
         let isAvailable = yield user_1.User.findOneBy({ email: email });
         if (!isAvailable) {
-            return res.status(400).json({ message: "👎🏻 User does not exist !!!!, please signup " });
+            return res
+                .status(400)
+                .json({ message: "👎🏻 User does not exist !!!!, please signup " });
         }
         let comparePassword = yield bcrypt.compareSync(password, isAvailable.password);
         if (!comparePassword) {
@@ -54,10 +56,12 @@ let loginUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         }
         let tokenPayload = {
             id: isAvailable.id,
-            email: isAvailable.email
+            email: isAvailable.email,
         };
-        let token = yield jwt.sign({ tokenPayload }, secretKey, { expiresIn: "300s" });
-        console.log(token);
+        let token = yield jwt.sign({ tokenPayload }, secretKey, {
+            expiresIn: "300s",
+        });
+        console.log("token :" + token);
         res.status(200).json({ message: "👍🏼 user login successfully ", token });
     }
     catch (error) {

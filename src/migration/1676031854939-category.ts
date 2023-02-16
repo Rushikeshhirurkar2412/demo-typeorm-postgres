@@ -1,44 +1,30 @@
 import { MigrationInterface, QueryRunner, Table, TableForeignKey } from "typeorm"
 
-export default class user1675857501793 implements MigrationInterface {
+export class category1676031854939 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: "user",
-                columns: [
+                name: "category",
+                columns:[
                     {
-                        name: "id",
-                        type: "int",
-                        isPrimary: true,
+                        name:"id",
+                        type:"int",
+                        isPrimary:true,
                         isGenerated:true,
+
                     },
                     {
-                        name: "first_name",
-                        type: "varchar",
+                        name:"category_name",
+                        type:"varChar",   
                     },
                     {
-                        name: "lname_name",
-                        type: "varchar",
+                        name:"parent_category_id",
+                        type:"int",   
                     },
                     {
-                        name: "email",
-                        type: "varchar",
-                    },
-                    {
-                        name: "password",
-                        type: "varchar",
-    
-                    },
-                    {
-                        name: "is_active",
-                        type: "boolean",
-    
-                    },
-                    {
-                        name: "is_deleted",
-                        type: "boolean",
-    
+                        name:"sort",
+                        type:"int",   
                     },
                     {
                         name: "created_by",
@@ -74,14 +60,16 @@ export default class user1675857501793 implements MigrationInterface {
     
                     }
 
-                ],
+                ]
             })
-        );
-        
+        )
+
+
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("user")
+    await queryRunner.dropTable("category");
+
     }
 
 }

@@ -11,7 +11,6 @@ const connections = new typeorm_1.DataSource({
     database: "postdb",
     synchronize: false,
     logging: false,
-    //    entities:[Product,User],
     entities: [`${__dirname}/entities/**/*{.ts,.js}`],
     migrations: [`${__dirname}/migration/**/*{.ts,.js}`],
 });

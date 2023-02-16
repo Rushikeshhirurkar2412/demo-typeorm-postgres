@@ -1,4 +1,13 @@
-import { Entity,Column,PrimaryGeneratedColumn,BaseEntity} from "typeorm";
+import { string } from "joi";
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  BaseEntity,
+  OneToOne,
+  JoinColumn,
+} from "typeorm";
+import { User_details } from "./details";
 
 
 @Entity()
@@ -7,10 +16,10 @@ export class User extends BaseEntity {
   id: Number;
 
   @Column()
-  fname: string;
+  first_name: string;
 
   @Column()
-  lname: string;
+  lname_name: string;
 
   @Column()
   email: string;
@@ -19,14 +28,30 @@ export class User extends BaseEntity {
   password: string;
 
   @Column()
-  age: Number;
-  
-  @Column()
-  city: string;
+  is_active: boolean;
 
   @Column()
-  state: string;
+  is_deleted: boolean;
 
+  @Column()
+  created_by: string;
+
+  @Column()
+  updated_by: string;
+
+  @Column()
+  deleted_by: string;
+
+  @Column()
+  created_at: Date;
+
+  @Column()
+  updated_at: Date;
+
+  @Column()
+  deleted_at: Date;
+
+  @OneToOne(() => User_details, (User_details) => User_details.user)
+  @JoinColumn({ name: "id" })
+  UserDetails: User_details;
 }
-
-

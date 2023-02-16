@@ -13,7 +13,7 @@ exports.userCreateSchema = joi_1.default.object({
     confirmPassword: joi_1.default.ref('password'),
     age: joi_1.default.number().min(3),
     city: joi_1.default.string().min(3).max(10),
-    state: joi_1.default.string().min(3).max(10)
+    state: joi_1.default.string().min(3).max(30)
 });
 exports.loginUserSchema = joi_1.default.object({
     email: joi_1.default.string().email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }).required(),

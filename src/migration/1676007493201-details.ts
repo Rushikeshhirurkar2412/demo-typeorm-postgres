@@ -1,11 +1,11 @@
 import { MigrationInterface, QueryRunner, Table, TableForeignKey } from "typeorm"
 
-export default class user1675857501793 implements MigrationInterface {
+export class details1676007493201 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: "user",
+                name: "User_details",
                 columns: [
                     {
                         name: "id",
@@ -13,32 +13,22 @@ export default class user1675857501793 implements MigrationInterface {
                         isPrimary: true,
                         isGenerated:true,
                     },
+  
                     {
-                        name: "first_name",
+                        name: "age",
+                        type: "int",
+                    },
+                    {
+                        name: "city",
                         type: "varchar",
                     },
                     {
-                        name: "lname_name",
+                        name: "state",
                         type: "varchar",
                     },
                     {
-                        name: "email",
-                        type: "varchar",
-                    },
-                    {
-                        name: "password",
-                        type: "varchar",
-    
-                    },
-                    {
-                        name: "is_active",
-                        type: "boolean",
-    
-                    },
-                    {
-                        name: "is_deleted",
-                        type: "boolean",
-    
+                        name: "user_id",
+                        type: "int",
                     },
                     {
                         name: "created_by",
@@ -73,15 +63,25 @@ export default class user1675857501793 implements MigrationInterface {
                         default: "now()"
     
                     }
-
                 ],
             })
-        );
-        
+        ),true
+
+
+        await queryRunner.createForeignKey(
+            "User_details",
+            new TableForeignKey({
+                columnNames:["user_id"],
+                referencedTableName:"user",
+                referencedColumnNames:["id"]
+            })  
+        )
     }
 
+
+
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("user")
+      await queryRunner.dropTable('User_details');
     }
 
 }

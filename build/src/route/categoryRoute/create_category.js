@@ -9,22 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getDataUSer = void 0;
-const user_1 = require("../../entities/user");
-const getDataUSer = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        let { id } = req.params;
-        let getData = yield user_1.User.find({ where: { id: id },
-            relations: ["UserDetails"]
-        });
-        if (getData.length === 0) {
-            return res.status(400).json({ message: "id is not found." });
-        }
-        res.status(200).json({ message: getData });
-        console.log(getData);
-    }
-    catch (error) {
-        res.json({ message: "something went wrong", error });
-    }
+exports.create_category = void 0;
+const create_category = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 });
-exports.getDataUSer = getDataUSer;
+exports.create_category = create_category;

@@ -10,11 +10,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const typeorm_1 = require("typeorm");
-class user1675857501793 {
+class product1675857514392 {
     up(queryRunner) {
         return __awaiter(this, void 0, void 0, function* () {
             yield queryRunner.createTable(new typeorm_1.Table({
-                name: "user",
+                name: "brand",
                 columns: [
                     {
                         name: "id",
@@ -23,28 +23,12 @@ class user1675857501793 {
                         isGenerated: true,
                     },
                     {
-                        name: "first_name",
-                        type: "varchar",
+                        name: "brand_name",
+                        type: "varChar",
                     },
                     {
-                        name: "lname_name",
-                        type: "varchar",
-                    },
-                    {
-                        name: "email",
-                        type: "varchar",
-                    },
-                    {
-                        name: "password",
-                        type: "varchar",
-                    },
-                    {
-                        name: "is_active",
-                        type: "boolean",
-                    },
-                    {
-                        name: "is_deleted",
-                        type: "boolean",
+                        name: "product_id",
+                        type: "int",
                     },
                     {
                         name: "created_by",
@@ -61,26 +45,32 @@ class user1675857501793 {
                     {
                         name: "created_at",
                         type: "timestamp",
-                        default: "now()"
+                        default: "now()",
                     },
                     {
                         name: "updated_at",
                         type: "timestamp",
-                        default: "now()"
+                        default: "now()",
                     },
                     {
                         name: "deleted_at",
                         type: "timestamp",
-                        default: "now()"
-                    }
+                        default: "now()",
+                    },
                 ],
+            })),
+                true;
+            yield queryRunner.createForeignKey("brand", new typeorm_1.TableForeignKey({
+                columnNames: ["product_id"],
+                referencedTableName: "product",
+                referencedColumnNames: ["id"],
             }));
         });
     }
     down(queryRunner) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield queryRunner.dropTable("user");
+            yield queryRunner.dropTable("brand");
         });
     }
 }
-exports.default = user1675857501793;
+exports.default = product1675857514392;

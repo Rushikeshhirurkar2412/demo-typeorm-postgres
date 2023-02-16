@@ -9,22 +9,21 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getDataUSer = void 0;
-const user_1 = require("../../entities/user");
-const getDataUSer = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        let { id } = req.params;
-        let getData = yield user_1.User.find({ where: { id: id },
-            relations: ["UserDetails"]
+exports.foreingnkey1676012881976 = void 0;
+const typeorm_1 = require("typeorm");
+class foreingnkey1676012881976 {
+    up(queryRunner) {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield queryRunner.createForeignKey("user", new typeorm_1.TableForeignKey({
+                columnNames: ["details_id"],
+                referencedTableName: "details",
+                referencedColumnNames: ["id"]
+            }));
         });
-        if (getData.length === 0) {
-            return res.status(400).json({ message: "id is not found." });
-        }
-        res.status(200).json({ message: getData });
-        console.log(getData);
     }
-    catch (error) {
-        res.json({ message: "something went wrong", error });
+    down(queryRunner) {
+        return __awaiter(this, void 0, void 0, function* () {
+        });
     }
-});
-exports.getDataUSer = getDataUSer;
+}
+exports.foreingnkey1676012881976 = foreingnkey1676012881976;

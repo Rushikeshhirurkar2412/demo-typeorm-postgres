@@ -9,69 +9,48 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.User = void 0;
+exports.category = void 0;
 const typeorm_1 = require("typeorm");
-const details_1 = require("./details");
-let User = class User extends typeorm_1.BaseEntity {
+const product_1 = require("./product");
+let category = class category extends typeorm_1.BaseEntity {
 };
 __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Number)
-], User.prototype, "id", void 0);
+], category.prototype, "id", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], User.prototype, "first_name", void 0);
+], category.prototype, "category_name", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], User.prototype, "lname_name", void 0);
+], category.prototype, "created_by", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], User.prototype, "email", void 0);
+], category.prototype, "updated_by", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], User.prototype, "password", void 0);
-__decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", Boolean)
-], User.prototype, "is_active", void 0);
-__decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", Boolean)
-], User.prototype, "is_deleted", void 0);
-__decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", String)
-], User.prototype, "created_by", void 0);
-__decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", String)
-], User.prototype, "updated_by", void 0);
-__decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", String)
-], User.prototype, "deleted_by", void 0);
+], category.prototype, "deleted_by", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", Date)
-], User.prototype, "created_at", void 0);
+], category.prototype, "created_at", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", Date)
-], User.prototype, "updated_at", void 0);
+], category.prototype, "updated_at", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", Date)
-], User.prototype, "deleted_at", void 0);
+], category.prototype, "deleted_at", void 0);
 __decorate([
-    (0, typeorm_1.OneToOne)(() => details_1.User_details, (User_details) => User_details.user),
-    (0, typeorm_1.JoinColumn)({ name: "id" }),
-    __metadata("design:type", details_1.User_details)
-], User.prototype, "UserDetails", void 0);
-User = __decorate([
+    (0, typeorm_1.OneToMany)(() => product_1.Product, (Product) => Product.id),
+    __metadata("design:type", product_1.Product)
+], category.prototype, "product_id", void 0);
+category = __decorate([
     (0, typeorm_1.Entity)()
-], User);
-exports.User = User;
+], category);
+exports.category = category;

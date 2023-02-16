@@ -20,7 +20,7 @@ const createProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* 
         // }
         let query = yield product_1.Product.insert({ Product__name: Product__name,
             description: description });
-        console.log("Product has been created", query);
+        console.log("user has been created", query);
         res.status(200).json({ message: "user has been created" });
     }
     catch (error) {

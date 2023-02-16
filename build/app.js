@@ -40,6 +40,7 @@ const dotenv = __importStar(require("dotenv"));
 const body_parser_1 = __importDefault(require("body-parser"));
 const my_app_data_source_1 = __importDefault(require("./src/my-app-data-source"));
 const userRoute_1 = require("./src/route/userRoute");
+const productRoute_1 = __importDefault(require("./src/route/productRoute"));
 let port = process.env.PORT || 4501;
 dotenv.config();
 const app = (0, express_1.default)();
@@ -62,4 +63,5 @@ app.use(body_parser_1.default.json());
 }))();
 // this is middleware for CRUD
 app.use("/", userRoute_1.route);
+app.use("/", productRoute_1.default);
 // url: process.env.DATABASE_URL,
