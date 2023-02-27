@@ -23,24 +23,65 @@ class user1675857501793 {
                         isGenerated: true,
                     },
                     {
-                        name: "fname",
+                        name: "first_name",
                         type: "varchar",
                     },
                     {
-                        name: "lname",
+                        name: "last_name",
                         type: "varchar",
                     },
                     {
-                        name: "age",
-                        type: "int",
-                    },
-                    {
-                        name: "city",
+                        name: "email",
                         type: "varchar",
                     },
                     {
-                        name: "state",
+                        name: "password",
                         type: "varchar",
+                    },
+                    {
+                        name: "is_active",
+                        type: "boolean",
+                        default: true,
+                    },
+                    {
+                        name: "is_deleted",
+                        type: "boolean",
+                        default: false,
+                    },
+                    {
+                        name: "email_verification_token",
+                        type: "varchar",
+                        isNullable: true,
+                    },
+                    {
+                        name: "created_by",
+                        type: "varchar",
+                        isNullable: true,
+                    },
+                    {
+                        name: "updated_by",
+                        type: "varchar",
+                        isNullable: true,
+                    },
+                    {
+                        name: "deleted_by",
+                        type: "varchar",
+                        isNullable: true,
+                    },
+                    {
+                        name: "created_at",
+                        type: "varchar",
+                        isNullable: true,
+                    },
+                    {
+                        name: "updated_at",
+                        type: "varchar",
+                        isNullable: true,
+                    },
+                    {
+                        name: "deleted_at",
+                        type: "varchar",
+                        isNullable: true,
                     },
                 ],
             }));

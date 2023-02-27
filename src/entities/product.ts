@@ -7,6 +7,27 @@ export class Product extends BaseEntity {
   id: Number;
 
   @Column()
-  Product__name: string;
+  Product_name: string;
+
+  @Column()
+  description: string;
+
+  @Column()
+  created_by: string;
+
+  @Column()
+  updated_by: string;
+
+  @Column()
+  deleted_by: string;
+
+  @Column()
+  created_at: Date;
+
+  @Column()
+  updated_at: Date;
+
+  @Column()
+  deleted_at: Date;
 }
 
